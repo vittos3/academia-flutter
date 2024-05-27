@@ -19,26 +19,52 @@ void main() {
     'Laura|29|Feminino',
   ];
 
-  //! Baseado na lista acima.
+  final pessoasLista =
+      pessoas.toSet().map((pessoa) => pessoa.split('|')).toList();
+
   //! 1 - Remova os pacientes duplicados e apresente a nova lista
-  final removeDuplicidades = pessoas.toSet();
-  // print(removeDuplicidades.toList());
+  print(pessoasLista);
   //! 2 - Me mostre a quantidade de pessoas por sexo (Masculino e Feminino) e depois me apresente o nome delas
-  final feminino =
-      pessoas.where((element) => element.contains('Feminino')).toList();
-  final masculino =
-      pessoas.where((element) => element.contains('Masculino')).toList();
-  // print('Existem ${feminino.length} pessoas do sexo feminino. ${feminino}');
-  // print('Existem ${masculino.length} pessoas do sexo masculino. ${masculino}');
+  Map<String, List<String>> peopleGender = {
+    'listaFeminino': [],
+    'listaMasculino': []
+  };
+
+  pessoasLista.forEach((pessoa) {
+    if (pessoa[2] == 'Feminino') peopleGender['listaFeminino']?.add(pessoa[0]);
+    if (pessoa[2] == 'Masculino')
+      peopleGender['listaMasculino']?.add(pessoa[0]);
+  });
+
+  print('\n');
+  print(
+      'Sexo masculino ${peopleGender['listaMasculino']?.length} - ${peopleGender['listaMasculino']}');
+  print(
+      'Sexo feminino ${peopleGender['listaFeminino']?.length} - ${peopleGender['listaFeminino']}');
 
   //! 3 - Filtrar e deixar a lista somente com pessoas maiores de 18 anos e apresente essas pessoas pelo nome
-  var pessoas18mais = removeDuplicidades.map((pessoa) {
-    var nomePessoa = pessoa.split('|');
-    if (int.parse(nomePessoa[1]) > 18) {
-      return nomePessoa[0];
-    }
-  }).toList();
+  final peopleComeOfAge = pessoasLista
+      .where((pessoa) => int.parse(pessoa[1]) > 18)
+      .map((pessoa) => pessoa[0])
+      .toList();
 
-  print('${pessoas18mais}');
+  print('\n');
+  print('A lista de usuários maiores de 18 é ${peopleComeOfAge}');
+
   //! 4 - Encontre a pessoa mais velha e apresente o nome dela.
+  var older = pessoasLista[0];
+
+  pessoasLista.forEach((pessoa) {
+    if (int.parse(pessoa[1]) > int.parse(older[1])) {
+      older = pessoa;
+    }
+  });
+
+  print('A pessoa mais velha da lista é ${older[0]} com ${older[1]} anos');
+
+  //Encontrar a média de idade das pessoas e apresentar o resultado:
+  print('\n');  
+  var idades = pessoasLista.map((pessoa) => int.parse(pessoa[1])).toList();
+
+  print(idades);
 }
