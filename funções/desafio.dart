@@ -32,8 +32,7 @@ void main() {
 
   pessoasLista.forEach((pessoa) {
     if (pessoa[2] == 'Feminino') peopleGender['listaFeminino']?.add(pessoa[0]);
-    if (pessoa[2] == 'Masculino')
-      peopleGender['listaMasculino']?.add(pessoa[0]);
+    if (pessoa[2] == 'Masculino') peopleGender['listaMasculino']?.add(pessoa[0]);
   });
 
   print('\n');
@@ -55,16 +54,10 @@ void main() {
   var older = pessoasLista[0];
 
   pessoasLista.forEach((pessoa) {
-    if (int.parse(pessoa[1]) > int.parse(older[1])) {
-      older = pessoa;
-    }
-  });
+    if (int.parse(pessoa[1]) > int.parse(older[1]))older = pessoa;
+    });
 
   print('A pessoa mais velha da lista é ${older[0]} com ${older[1]} anos');
 
-  //Encontrar a média de idade das pessoas e apresentar o resultado:
-  print('\n');  
-  var idades = pessoasLista.map((pessoa) => int.parse(pessoa[1])).toList();
-
-  print(idades);
+  
 }
