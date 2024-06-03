@@ -24,3 +24,10 @@ void cadastro({String? nome, int? idade, String? sobrenome}) {
   print(
       'Nome${nome}\nSobrenome:${sobrenome}\nIdade:${idade}.\nParabéns, ${nome}! Seu cadastro foi concluído com sucesso.');
 }
+
+// função em variáveis
+
+var generateNumbers = () => {
+
+/*   var numbers = Random().generateNumbers(10); 
+ */};
