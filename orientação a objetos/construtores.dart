@@ -1,26 +1,9 @@
-class Data {
-  int? dia;
-  int? mes;
-  int? ano;
+import 'pessoa.dart';
 
-  /* Data({required int dia, required int mes, required int ano}) {
-    this.dia = dia;
-    this.mes = mes;
-    this.ano = ano; 
-  } */
+void main() {
+  var vitor = Pessoa(nome: 'Vitor Silva de Souza', idade: '25', sexo: 'M');
 
-  //Mesmo resultado do construtor anterior.
-  // Construtores funcionam da mesma forma que funções
-  // Construtores nomeados utilizam as chaves { }
-  Data({required this.dia, required this.mes, required this.ano});
+  vitor.sexo = 'M';
 
-  getData() {
-    print('$dia/$mes/$ano');
-  }
-}
-
-main() {
-  var d1 = new Data(dia: 01, mes: 01, ano: 2018);
-
-  d1.getData();
+  Pessoa.semNome(idade: '25', sexo: 'M');
 }

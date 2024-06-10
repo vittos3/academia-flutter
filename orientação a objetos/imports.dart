@@ -1,7 +1,5 @@
 import './pessoa.dart';
 
 main() {
-  var p1 = Pessoa(nome: 'Vitor Silva');
-
-  print(p1.nome);
+  var pessoa01 = Pessoa(nome: 'Vitor Silva de Souza', idade: '25', sexo: 'M');
 }
